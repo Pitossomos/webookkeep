@@ -1,13 +1,60 @@
+# WeBookkeep
+
+A bookkepping system for personal finances based on the double-entry method, used all around the world for managing business and accounting.
+
+## Application model
+
+### Use Cases
+
+```mermaid
+---
+config:
+  layout: elk
+  look: classic
+  theme: dark
+  displayMode: compact
+  markdownAutoWrap: false
+  elk:
+    mergeEdges: true
+    nodePlacementStrategy: LINEAR_SEGMENTS
+  flowchart:
+    htmlLabels: false
+    compact: true  
+---
+
+flowchart LR
+subgraph "Use cases"
+  uc1([Register transactions])
+  uc2([View transactions])
+  uc3([View results])
+  uc4([View values])
+  uc5([Edit accounts])
+  uc6([Log In])
+end
+
+client[Client👩‍🦰👳🏾🧔🏻‍♂️]
+client-->uc1
+client-->uc2
+client-->uc3
+client-->uc4
+client-->uc5
+client-->uc6
+```
+
+-----
+
 # TODO Backlog
 
 - ✅ Initialize project
 - ✅ Initialize backlog
-- 🔲 Draw class diagram
+- 🔲 Application modeling
 - 🔲 Implement initial frontend
 - 🔲 Implement main entities classes w/ tests
 - 🔲 Update documentation
 - 🔲 Implement db
 - 🔲 Public deploy
+
+-----
 
 # React + TypeScript + Vite
 
