@@ -81,6 +81,24 @@ erDiagram
   ACCOUNT ||--o{ TRANSACTION : "destination for"
 ```
 
+### Some Design Patterns to implement
+
+We can use the following design patterns on the project (among other options):
+
+- Builder, to simplify and clarify the Transaction constructor, e.g.:
+
+  ```JS
+    Transaction transaction = new Transaction.Builder()
+        .withDescription("Almoço")
+        .withValue(50)
+        .fromAccount(carteira)
+        .toAccount(restaurantes)
+        .build();
+  ```
+
+- Adapter, to integrate with external APIs for retrieving transactions (e.g. Nubank, Itaú, etc)
+- Repository, to isolate data access from business logic
+
 ---
 
 ## TODO Backlog
