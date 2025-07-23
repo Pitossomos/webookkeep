@@ -105,7 +105,7 @@ We can use the following design patterns on the project (among other options):
 
 - ✅ Initialize project
 - ✅ Initialize backlog
-- 🔲 Application modeling
+- ✅ Application modeling
 - 🔲 Implement initial frontend
 - 🔲 Implement main entities classes w/ tests
 - 🔲 Update documentation
