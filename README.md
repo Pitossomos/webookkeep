@@ -110,6 +110,15 @@ We can use the following design patterns on the project (among other options):
 - ✅ Initialize project
 - ✅ Initialize backlog
 - ✅ Application modeling
+  - 🔲 log in page
+  - 🔲 edit user page
+  - 🔲 edit book page
+  - 🔲 view books
+  - 🔲 view a single book
+  - 🔲 edit transaction page
+  - 🔲 transactions page
+  - 🔲 edit accounts page
+  - 🔲 view accounts
 - 🔲 Implement initial frontend
 - 🔲 Implement main entities classes w/ tests
 - 🔲 Update documentation
