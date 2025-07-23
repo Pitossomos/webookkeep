@@ -22,15 +22,16 @@ config:
     compact: true
 ---
 
-flowchart LR
-subgraph "Use cases"
-  uc1([Register transactions])
-  uc2([View transactions])
-  uc3([View results])
-  uc4([View values])
-  uc5([Edit accounts])
-  uc6([Log In])
-end
+flowchart TD
+uc1([Register transactions])
+uc2([View transactions])
+uc3([View results])
+uc4([View values])
+uc5([Edit accounts])
+uc6([Log In])
+uc7([Edit books])
+uc8([View books])
+uc9([Create user])
 
 client[Client👩‍🦰👳🏾🧔🏻]
 client-->uc1
@@ -39,6 +40,9 @@ client-->uc3
 client-->uc4
 client-->uc5
 client-->uc6
+client-->uc7
+client-->uc8
+client-->uc9
 ```
 
 ### Entity-Relationship Diagram
@@ -105,7 +109,7 @@ We can use the following design patterns on the project (among other options):
 
 - ✅ Initialize project
 - ✅ Initialize backlog
-- 🔲 Application modeling
+- ✅ Application modeling
 - 🔲 Implement initial frontend
 - 🔲 Implement main entities classes w/ tests
 - 🔲 Update documentation
