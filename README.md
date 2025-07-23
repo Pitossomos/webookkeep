@@ -110,6 +110,7 @@ We can use the following design patterns on the project (among other options):
 - ✅ Initialize project
 - ✅ Initialize backlog
 - ✅ Application modeling
+- 🔲 Implement initial frontend
   - 🔲 log in page
   - 🔲 edit user page
   - 🔲 edit book page
@@ -119,7 +120,6 @@ We can use the following design patterns on the project (among other options):
   - 🔲 transactions page
   - 🔲 edit accounts page
   - 🔲 view accounts
-- 🔲 Implement initial frontend
 - 🔲 Implement main entities classes w/ tests
 - 🔲 Update documentation
 - 🔲 Implement db
