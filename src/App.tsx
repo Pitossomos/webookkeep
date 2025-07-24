@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router';
-import './App.css'
 import BooksView from './views/BooksView';
 
 function App() {
