@@ -114,7 +114,7 @@ We can use the following design patterns on the project (among other options):
   - 🔲 log in page
   - 🔲 edit user page
   - 🔲 edit book page
-  - 🔲 view books
+  - ✅ view books
   - 🔲 view a single book
   - 🔲 edit transaction page
   - 🔲 transactions page
