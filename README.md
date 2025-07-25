@@ -117,9 +117,9 @@ We can use the following design patterns on the project (among other options):
   - ✅ view books
   - 🔲 view a single book
   - 🔲 edit transaction page
-  - 🔲 transactions page
+  - ✅ transactions page
   - 🔲 edit accounts page
-  - 🔲 view accounts
+  - ✅ view accounts
 - 🔲 Implement main entities classes w/ tests
 - 🔲 Update documentation
 - 🔲 Implement db
