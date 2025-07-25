@@ -1,4 +1,7 @@
 import { Book, Edit, Eye, Plus, Trash2 } from "lucide-react";
+import MainWrapper from "../components/MainWrapper";
+import TitleWrapper from "../components/TitleWrapper";
+import PlusButton from "../components/PlusButton";
 
 const BooksView = () => {
   const books = [
@@ -7,17 +10,14 @@ const BooksView = () => {
   ]
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen rounded-lg shadow-md">
-      <h1 className="text-3xl font-extrabold mb-6 text-gray-900 flex items-center">
+    <MainWrapper>
+      <TitleWrapper>
         <Book className="mr-3 text-blue-600" size={32} />
         Meus Livros
-      </h1>
-      <button
-        className="mb-6 px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-200 flex items-center"
-      >
-        <Plus size={20} className="mr-2" />
+      </TitleWrapper>
+      <PlusButton pageThemeColor="blue">
         Criar Novo Livro
-      </button>
+      </PlusButton>
 
       {books.length === 0 ? (
         <p className="text-gray-600 text-lg">Nenhum livro cadastrado. Comece criando um novo livro!</p>
@@ -51,7 +51,7 @@ const BooksView = () => {
           ))}
         </div>
       )}
-    </div>
+    </MainWrapper>
   );
 };
 
