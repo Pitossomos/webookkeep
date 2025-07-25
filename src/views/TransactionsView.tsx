@@ -58,18 +58,11 @@ const TransactionsView = () => {
                   <td className="py-3 px-4 text-sm text-gray-800">{getAccountNameById(tx.source_account_id)}</td>
                   <td className="py-3 px-4 text-sm text-gray-800">{getAccountNameById(tx.destination_account_id)}</td>
                   <td className="py-3 px-4 whitespace-nowrap text-sm">
-                    <div className="flex space-x-2">
-                      <button
-                        className="p-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-colors duration-200"
-                      >
-                        <Edit size={16} />
-                      </button>
-                      <button
-                        className="p-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors duration-200"
-                      >
-                        <Trash2 size={16} />
-                      </button>
-                    </div>
+                    <button
+                      className="p-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-colors duration-200"
+                    >
+                      <Edit size={16} />
+                    </button>
                   </td>
                 </tr>
               ))}
