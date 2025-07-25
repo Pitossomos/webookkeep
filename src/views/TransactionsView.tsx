@@ -1,4 +1,7 @@
 import { Repeat, Plus, Edit, Trash2 } from "lucide-react";
+import MainWrapper from "../components/MainWrapper";
+import TitleWrapper from "../components/TitleWrapper";
+import PlusButton from "../components/PlusButton";
 
 const TransactionsView = () => {
 
@@ -20,24 +23,14 @@ const TransactionsView = () => {
   const book = { id: 1, name: 'Livro 1' };
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen rounded-lg shadow-md">
-      <h1 className="text-3xl font-extrabold mb-6 text-gray-900 flex items-center">
+    <MainWrapper>
+      <TitleWrapper>
         <Repeat className="mr-3 text-teal-600" size={32} />
         Transações para Livro: "{book.name}"
-      </h1>
-      <div className="flex justify-between items-center mb-6">
-        <button
-          className="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg shadow-md hover:bg-gray-300 transition-colors duration-200 flex items-center"
-        >
-          Voltar para Contas
-        </button>
-        <button
-          className="px-6 py-3 bg-teal-600 text-white rounded-lg shadow-md hover:bg-teal-700 transition-colors duration-200 flex items-center"
-        >
-          <Plus size={20} className="mr-2" />
-          Criar Nova Transação
-        </button>
-      </div>
+      </TitleWrapper>
+      <PlusButton pageThemeColor="teal">
+        Criar Nova Transação
+      </PlusButton>
 
       {transactions.length === 0 ? (
         <p className="text-gray-600 text-lg">Nenhuma transação cadastrada para esta conta. Comece criando uma nova transação!</p>
@@ -84,7 +77,7 @@ const TransactionsView = () => {
           </table>
         </div>
       )}
-    </div>
+    </MainWrapper>
   );
 };
 
