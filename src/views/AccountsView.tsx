@@ -1,4 +1,7 @@
 import { Edit, Plus, Repeat, Trash2, Wallet } from "lucide-react";
+import MainWrapper from "../components/MainWrapper";
+import TitleWrapper from "../components/TitleWrapper";
+import PlusButton from "../components/PlusButton";
 
 const AccountsView = () => {
   const accounts = [
@@ -9,24 +12,14 @@ const AccountsView = () => {
   const book = { id: 1, name: 'Livro 1' };
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen rounded-lg shadow-md">
-      <h1 className="text-3xl font-extrabold mb-6 text-gray-900 flex items-center">
+    <MainWrapper>
+      <TitleWrapper>
         <Wallet className="mr-3 text-purple-600" size={32} />
         Contas para "{book.name}"
-      </h1>
-      <div className="flex justify-between items-center mb-6">
-        <button
-          className="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg shadow-md hover:bg-gray-300 transition-colors duration-200 flex items-center"
-        >
-          Voltar para Livros
-        </button>
-        <button
-          className="px-6 py-3 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition-colors duration-200 flex items-center"
-        >
-          <Plus size={20} className="mr-2" />
-          Criar Nova Conta
-        </button>
-      </div>
+      </TitleWrapper>
+      <PlusButton pageThemeColor="purple">
+        Criar Nova Conta
+      </PlusButton>
 
       {accounts.length === 0 ? (
         <p className="text-gray-600 text-lg">Nenhuma conta cadastrada para este livro. Comece criando uma nova conta!</p>
@@ -61,7 +54,7 @@ const AccountsView = () => {
           ))}
         </div>
       )}
-    </div>
+    </MainWrapper>
   );
 };
 
