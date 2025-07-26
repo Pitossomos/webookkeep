@@ -2,6 +2,28 @@
 
 A bookkepping system for personal finances based on the double-entry method, used all around the world for managing business and accounting.
 
+## TODO Backlog
+
+- ✅ Initialize project
+- ✅ Initialize backlog
+- ✅ Application modeling
+- 🔲 Implement initial frontend
+  - 🔲 log in page
+  - 🔲 edit user page
+  - 🔲 edit book page
+  - ✅ view books
+  - 🔲 view a single book
+  - 🔲 edit transaction page
+  - ✅ transactions page
+  - ✅ edit accounts page
+  - ✅ view accounts
+- 🔲 Implement main entities classes w/ tests
+- 🔲 Update documentation
+- 🔲 Implement db
+- 🔲 Public deploy
+
+---
+
 ## Application model
 
 ### Use Cases
@@ -102,28 +124,6 @@ We can use the following design patterns on the project (among other options):
 
 - Adapter, to integrate with external APIs for retrieving transactions (e.g. Nubank, Itaú, etc)
 - Repository, to isolate data access from business logic
-
----
-
-## TODO Backlog
-
-- ✅ Initialize project
-- ✅ Initialize backlog
-- ✅ Application modeling
-- 🔲 Implement initial frontend
-  - 🔲 log in page
-  - 🔲 edit user page
-  - 🔲 edit book page
-  - ✅ view books
-  - 🔲 view a single book
-  - 🔲 edit transaction page
-  - ✅ transactions page
-  - 🔲 edit accounts page
-  - ✅ view accounts
-- 🔲 Implement main entities classes w/ tests
-- 🔲 Update documentation
-- 🔲 Implement db
-- 🔲 Public deploy
 
 ---
 
