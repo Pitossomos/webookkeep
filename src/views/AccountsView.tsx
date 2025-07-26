@@ -1,7 +1,8 @@
-import { Edit, Plus, Repeat, Trash2, Wallet } from "lucide-react";
+import { Edit, Wallet } from "lucide-react";
 import MainWrapper from "../components/MainWrapper";
 import TitleWrapper from "../components/TitleWrapper";
 import PlusButton from "../components/PlusButton";
+import { Link } from "react-router";
 
 const AccountsView = () => {
   const accounts = [
@@ -17,7 +18,7 @@ const AccountsView = () => {
         <Wallet className="mr-3 text-purple-600" size={32} />
         Contas para "{book.name}"
       </TitleWrapper>
-      <PlusButton pageThemeColor="purple">
+      <PlusButton>
         Criar Nova Conta
       </PlusButton>
 
@@ -29,11 +30,13 @@ const AccountsView = () => {
             <div key={account.id} className="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
               <h3 className="text-xl font-semibold mb-2 text-gray-800 flex justify-between">
                 {account.name}
-                <button
-                  className="p-2 bg-yellow-500 text-white left rounded-md hover:bg-yellow-600 transition-colors duration-200"
-                >
-                  <Edit size={16} />
-                </button>  
+                <Link to={`${account.id}/edit`}>
+                  <button
+                    className="p-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-colors duration-200"
+                  >
+                    <Edit size={16} />
+                  </button>
+                </Link>
               </h3>
               <p className="text-gray-700 font-medium text-sm mb-4">
                 Tipo: {account.type}

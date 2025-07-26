@@ -1,4 +1,4 @@
-import { Repeat, Plus, Edit, Trash2 } from "lucide-react";
+import { Repeat, Edit } from "lucide-react";
 import MainWrapper from "../components/MainWrapper";
 import TitleWrapper from "../components/TitleWrapper";
 import PlusButton from "../components/PlusButton";
@@ -28,7 +28,7 @@ const TransactionsView = () => {
         <Repeat className="mr-3 text-teal-600" size={32} />
         Transações para Livro: "{book.name}"
       </TitleWrapper>
-      <PlusButton pageThemeColor="teal">
+      <PlusButton>
         Criar Nova Transação
       </PlusButton>
 

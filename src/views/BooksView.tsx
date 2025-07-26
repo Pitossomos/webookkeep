@@ -1,4 +1,4 @@
-import { Book, Edit, Eye, Plus, Trash2, Wallet } from "lucide-react";
+import { Book, Edit, Eye, Wallet } from "lucide-react";
 import MainWrapper from "../components/MainWrapper";
 import TitleWrapper from "../components/TitleWrapper";
 import PlusButton from "../components/PlusButton";
@@ -9,13 +9,13 @@ const BooksView = () => {
     { id: 2, name: "Livro 2", description: "Descrição do Livro 2" },
   ]
 
-  return (
+  return <>
     <MainWrapper>
       <TitleWrapper>
         <Book className="mr-3 text-blue-600" size={32} />
         Meus Livros
       </TitleWrapper>
-      <PlusButton pageThemeColor="blue">
+      <PlusButton>
         Criar Novo Livro
       </PlusButton>
 
@@ -52,7 +52,7 @@ const BooksView = () => {
         </div>
       )}
     </MainWrapper>
-  );
+  </>
 };
 
 export default BooksView;
