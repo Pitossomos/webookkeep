@@ -4,6 +4,7 @@ import AccountsView from './views/AccountsView';
 import TransactionsView from './views/TransactionsView';
 import NavLinkButton from './components/NavLinkButton';
 import AccountEditView from './views/AccountEditView';
+import BookEditView from './views/BookEditView';
 
 function App() {
   return (
@@ -23,11 +24,15 @@ function App() {
       
       <Routes>
         <Route index element={<h1>Hi</h1>} />
-        <Route path="books" element={<BooksView />} />
+        <Route path="books" />
+          <Route index element={<BooksView />} />
+          <Route path=":bookId/edit" element={<BookEditView editing={true} />} />
+          <Route path="new" element={<BookEditView editing={false} />} />
+
         <Route path="accounts"> 
           <Route index element={<AccountsView />} />
-          <Route path=":accountId/edit" element={<AccountEditView editingAccount={true} />} />
-          <Route path="new" element={<AccountEditView editingAccount={false} />} />
+          <Route path=":accountId/edit" element={<AccountEditView editing={true} />} />
+          <Route path="new" element={<AccountEditView editing={false} />} />
         </Route>
         <Route path="transactions" element={<TransactionsView />}>
         </Route>
