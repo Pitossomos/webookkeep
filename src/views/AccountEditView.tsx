@@ -1,12 +1,12 @@
 import { useState, type FormEvent } from "react";
 
 type AccountEditViewProps = {
-  editingAccount: boolean
+  editing: boolean
 }
 
-const AccountEditView = ({ editingAccount }: AccountEditViewProps ) => {
+const AccountEditView = ({ editing }: AccountEditViewProps ) => {
 
-  const [account, setAccount] = useState({ id: 1, name: 'Conta 1', description: 'Descrição da Conta 1', type: 'Checking' });
+  const [account, setAccount] = useState(editing ? { id: 1, name: 'Conta 1', description: 'Descrição da Conta 1', type: 'Checking' } : { id: null, name: '', description: '', type: '' });
   const handleSubmitAccount = (e: FormEvent) => {
     e.preventDefault();
   }
@@ -60,7 +60,7 @@ const AccountEditView = ({ editingAccount }: AccountEditViewProps ) => {
           type="submit"
           className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors duration-200"
         >
-          {editingAccount ? 'Salvar Alterações' : 'Criar Conta'}
+          {editing ? 'Salvar Alterações' : 'Criar Conta'}
         </button>
       </div>
     </form>
