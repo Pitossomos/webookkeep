@@ -16,7 +16,7 @@ const Accounts = ({ accounts }: AccountsProps) => {
         <div key={account.id} className="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
           <h3 className="text-xl font-semibold mb-2 text-gray-800 flex justify-between">
             {account.name}
-            <Link to={`${account.id}/edit`}>
+            <Link to={`/accounts/${account.id}/edit`}>
               <button
                 className="p-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-colors duration-200"
               >
