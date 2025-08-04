@@ -10,7 +10,7 @@ A bookkepping system for personal finances based on the double-entry method, use
 - 🔲 Implement initial frontend
   - 🔲 log in page
   - 🔲 edit user page
-  - 🔲 edit book page
+  - ✅ edit book page
   - ✅ view books
   - ✅ view a single book
   - ✅ edit a single book
