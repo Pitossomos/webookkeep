@@ -3,13 +3,9 @@ import MainWrapper from "../components/MainWrapper";
 import TitleWrapper from "../components/TitleWrapper";
 import PlusButton from "../components/PlusButton";
 import { Link } from "react-router";
+import { BOOKS as books } from "../data/data";
 
 const BooksView = () => {
-  const books = [
-    { id: 1, name: "Livro 1", description: "Descrição do Livro 1" },
-    { id: 2, name: "Livro 2", description: "Descrição do Livro 2" },
-  ];
-
   return (
     <>
       <MainWrapper>
