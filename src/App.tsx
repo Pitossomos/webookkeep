@@ -1,11 +1,11 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router";
 import BooksView from "./views/BooksView";
 import AccountsView from "./views/AccountsView";
 import TransactionsView from "./views/TransactionsView";
-import NavLinkButton from "./components/NavLinkButton";
 import AccountEditView from "./views/AccountEditView";
 import BookEditView from "./views/BookEditView";
 import BookView from "./views/BookView";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
