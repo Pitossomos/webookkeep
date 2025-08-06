@@ -10,16 +10,7 @@ import BookView from "./views/BookView";
 function App() {
   return (
     <BrowserRouter>
-      <nav className="flex space-x-4 bg-gray-800 p-4">
-        <Link to="/" className="text-white text-xl font-bold">
-          weBookkeep
-        </Link>
-
-        <div className="flex space-x-2">
-          <NavLinkButton to="/">Home</NavLinkButton>
-          <NavLinkButton to="books">Books</NavLinkButton>
-        </div>
-      </nav>
+      <NavBar />
 
       <Routes>
         <Route index element={<h1>Hi</h1>} />
