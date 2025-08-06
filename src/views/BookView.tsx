@@ -2,7 +2,7 @@ import { Book } from "lucide-react";
 import MainWrapper from "../components/MainWrapper";
 import TitleWrapper from "../components/TitleWrapper";
 import Transactions from "./TransactionsView/Transactions";
-import Accounts from "../components/Accounts";
+import Accounts from "./AccountsView/Accounts";
 import {
   BOOKS,
   ACCOUNTS as accounts,
