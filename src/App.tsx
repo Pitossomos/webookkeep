@@ -32,6 +32,8 @@ function App() {
           </Route>
           <Route path="new" element={<BookEditView editing={false} />} />
         </Route>
+
+        <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
     </BrowserRouter>
   );
