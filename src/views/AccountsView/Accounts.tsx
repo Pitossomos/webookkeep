@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useParams } from "react-router";
 import { Edit } from "lucide-react";
 import type { Account } from "../../types/types";
 
@@ -7,6 +7,8 @@ type AccountsProps = {
 };
 
 const Accounts = ({ accounts }: AccountsProps) => {
+  const { bookId } = useParams<{ bookId: string }>();
+
   return accounts.length === 0 ? (
     <p className="text-gray-600 text-lg">
       Nenhuma conta cadastrada para este livro. Comece criando uma nova conta!
@@ -20,7 +22,7 @@ const Accounts = ({ accounts }: AccountsProps) => {
         >
           <h3 className="text-xl font-semibold mb-2 text-gray-800 flex justify-between">
             {account.name}
-            <Link to={`${account.id}/edit`}>
+            <Link to={`/books/${bookId}/accounts/${account.id}/edit`}>
               <button className="p-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-colors duration-200">
                 <Edit size={16} />
               </button>
