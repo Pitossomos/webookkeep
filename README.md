@@ -14,7 +14,7 @@ A bookkepping system for personal finances based on the double-entry method, use
   - ✅ view books
   - ✅ view a single book
   - ✅ edit a single book
-  - 🔲 edit transaction page
+  - ✅ edit transaction page
   - ✅ transactions page
   - ✅ edit accounts page
   - ✅ view accounts
