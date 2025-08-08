@@ -6,36 +6,43 @@ import AccountEditView from "./views/AccountEditView";
 import BookEditView from "./views/BookEditView";
 import BookView from "./views/BookView";
 import NavBar from "./components/NavBar";
+import ContextProvider from "./components/ContextProvider";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
-    <BrowserRouter>
-      <NavBar />
+    <ContextProvider value={{ accounts: [], book: null, transactions: [] }}>
+      <BrowserRouter>
+        <NavBar />
 
-      <Routes>
-        <Route index element={<h1>Hi</h1>} />
-        <Route path="books">
-          <Route index element={<BooksView />} />
+        <Routes>
+          <Route index element={<h1>Hi</h1>} />
+          <Route path="books">
+            <Route index element={<BooksView />} />
 
-          <Route path=":bookId">
-            <Route index element={<BookView />} />
-            <Route path="edit" element={<BookEditView editing={true} />} />
-            <Route path="transactions" element={<TransactionsView />} />
-            <Route path="accounts">
-              <Route index element={<AccountsView />} />
-              <Route
-                path=":accountId/edit"
-                element={<AccountEditView editing={true} />}
-              />
-              <Route path="new" element={<AccountEditView editing={false} />} />
+            <Route path=":bookId">
+              <Route index element={<BookView />} />
+              <Route path="edit" element={<BookEditView editing={true} />} />
+              <Route path="transactions" element={<TransactionsView />} />
+              <Route path="accounts">
+                <Route index element={<AccountsView />} />
+                <Route
+                  path=":accountId/edit"
+                  element={<AccountEditView editing={true} />}
+                />
+                <Route
+                  path="new"
+                  element={<AccountEditView editing={false} />}
+                />
+              </Route>
             </Route>
+            <Route path="new" element={<BookEditView editing={false} />} />
           </Route>
-          <Route path="new" element={<BookEditView editing={false} />} />
-        </Route>
 
-        <Route path="*" element={<h1>Not Found</h1>} />
-      </Routes>
-    </BrowserRouter>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </ContextProvider>
   );
 }
 
