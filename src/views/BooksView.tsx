@@ -3,9 +3,11 @@ import MainWrapper from "../components/MainWrapper";
 import TitleWrapper from "../components/TitleWrapper";
 import PlusButton from "../components/PlusButton";
 import { Link } from "react-router";
-import { BOOKS as books } from "../data/data";
+import { DEFAULT_DATA } from "../data/defaultData";
 
 const BooksView = () => {
+  const books = DEFAULT_DATA.books;
+
   return (
     <>
       <MainWrapper>
