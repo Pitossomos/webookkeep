@@ -3,10 +3,27 @@ import MainWrapper from "../../components/MainWrapper";
 import TitleWrapper from "../../components/TitleWrapper";
 import PlusButton from "../../components/PlusButton";
 import Transactions from "./Transactions";
-import { TRANSACTIONS as transactions, BOOKS } from "../../data/data";
+import { getBookById, getTransactionsByBookId } from "../../data/defaultData";
+import { useParams, redirect } from "react-router";
 
 const TransactionsView = () => {
-  const book = BOOKS[0];
+  const { bookId } = useParams();
+  const bookIdNumber =
+    bookId && !isNaN(Number(bookId)) ? Number(bookId) : undefined;
+
+  if (!bookIdNumber) {
+    redirect("/books");
+    return;
+  }
+
+  const book = getBookById(bookIdNumber);
+
+  if (!book) {
+    redirect("/books");
+    return;
+  }
+
+  const transactions = getTransactionsByBookId(bookIdNumber) || [];
 
   return (
     <MainWrapper>
