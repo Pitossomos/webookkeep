@@ -3,10 +3,27 @@ import MainWrapper from "../../components/MainWrapper";
 import TitleWrapper from "../../components/TitleWrapper";
 import PlusButton from "../../components/PlusButton";
 import Accounts from "./Accounts";
-import { ACCOUNTS as accounts, BOOKS } from "../../data/data";
+import { getAccountsByBookId, getBookById } from "../../data/defaultData";
+import { useParams, redirect } from "react-router";
 
 const AccountsView = () => {
-  const book = BOOKS[0];
+  const { bookId } = useParams();
+  const bookIdNumber =
+    bookId && !isNaN(Number(bookId)) ? Number(bookId) : undefined;
+
+  if (!bookIdNumber) {
+    redirect("/books");
+    return;
+  }
+
+  const book = getBookById(bookIdNumber);
+
+  if (!book) {
+    redirect("/books");
+    return;
+  }
+
+  const accounts = getAccountsByBookId(bookIdNumber) || [];
 
   return (
     <MainWrapper>
