@@ -3,14 +3,39 @@ import MainWrapper from "../components/MainWrapper";
 import TitleWrapper from "../components/TitleWrapper";
 import Transactions from "./TransactionsView/Transactions";
 import Accounts from "./AccountsView/Accounts";
+import { redirect, useParams } from "react-router";
 import {
-  BOOKS,
-  ACCOUNTS as accounts,
-  TRANSACTIONS as transactions,
-} from "../data/data";
+  getAccountsByBookId,
+  getBookById,
+  getTransactionsByBookId,
+} from "../data/defaultData";
 
 const BookView = () => {
-  const book = BOOKS[0];
+  const { bookId } = useParams();
+  const bookIdNumber =
+    bookId && !isNaN(Number(bookId)) ? Number(bookId) : undefined;
+
+  if (!bookIdNumber) {
+    redirect("/books");
+    return;
+  }
+
+  const book = getBookById(bookIdNumber);
+
+  if (!book) {
+    redirect("/books");
+    return;
+  }
+
+  const transactions = getTransactionsByBookId(bookIdNumber);
+  const accounts = getAccountsByBookId(bookIdNumber);
+
+  /* setContext({
+    book,
+    transactions,
+    accounts,
+  });
+  */
 
   return (
     <MainWrapper>
