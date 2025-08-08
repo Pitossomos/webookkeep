@@ -1,8 +1,8 @@
 import { Link, useParams } from "react-router";
 import NavLinkButton from "../NavLinkButton";
 import Separator from "./Separator";
-import React from "react";
-import { BOOKS } from "../../data/data";
+import React, { useContext } from "react";
+import ContextProvider from "../ContextProvider";
 
 const buildLinks = (bookId: string | undefined) => {
   const links = [
@@ -12,10 +12,7 @@ const buildLinks = (bookId: string | undefined) => {
 
   if (!bookId) return links;
 
-  console.log("building Navbar with bookId " + bookId);
-  const bookIdNum = bookId ? Number(bookId) : 0;
-  const book = BOOKS.find((b) => b.id === bookIdNum) || null;
-
+  const { book } = useContext(ContextProvider);
   if (book) {
     links.push(
       { to: `/books/${book.id}`, label: book.name },
@@ -29,7 +26,7 @@ const buildLinks = (bookId: string | undefined) => {
 };
 
 const NavBar = () => {
-  const bookId = useParams().bookId;
+  const { bookId } = useParams();
   const links = buildLinks(bookId);
 
   return (
