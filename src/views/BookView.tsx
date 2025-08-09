@@ -3,41 +3,15 @@ import MainWrapper from "../components/MainWrapper";
 import TitleWrapper from "../components/TitleWrapper";
 import Transactions from "./TransactionsView/Transactions";
 import Accounts from "./AccountsView/Accounts";
-import { redirect, useParams } from "react-router";
-import {
-  getAccountsByBookId,
-  getBookById,
-  getTransactionsByBookId,
-} from "../data/defaultData";
+import { useParams } from "react-router";
+import { getBookByIdString } from "../data/defaultData";
+import NotFound from "../components/NotFound";
 
 const BookView = () => {
   const { bookId } = useParams();
-  const bookIdNumber =
-    bookId && !isNaN(Number(bookId)) ? Number(bookId) : undefined;
+  const book = getBookByIdString(bookId);
 
-  if (!bookIdNumber) {
-    redirect("/books");
-    return;
-  }
-
-  const book = getBookById(bookIdNumber);
-
-  if (!book) {
-    redirect("/books");
-    return;
-  }
-
-  const transactions = getTransactionsByBookId(bookIdNumber);
-  const accounts = getAccountsByBookId(bookIdNumber);
-
-  /* setContext({
-    book,
-    transactions,
-    accounts,
-  });
-  */
-
-  return (
+  return book ? (
     <MainWrapper>
       <TitleWrapper>
         <Book className="mr-3 text-blue-600" size={32} />
@@ -48,14 +22,16 @@ const BookView = () => {
       <div className="flex md:flex-col lg:flex-row space-x-8 mb-6">
         <div>
           <h2 className="text-lg font-semibold p-4">Transações</h2>
-          <Transactions transactions={transactions} editing={false} />
+          <Transactions book={book} />
         </div>
         <div>
           <h2 className="text-lg font-semibold p-4">Contas</h2>
-          <Accounts accounts={accounts} />
+          <Accounts book={book} />
         </div>
       </div>
     </MainWrapper>
+  ) : (
+    <NotFound />
   );
 };
 
