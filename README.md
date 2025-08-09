@@ -8,16 +8,23 @@ A bookkepping system for personal finances based on the double-entry method, use
 - ✅ Initialize backlog
 - ✅ Application modeling
 - 🔲 Implement initial frontend
-  - 🔲 log in page
-  - 🔲 edit user page
   - ✅ edit book page
   - ✅ view books
   - ✅ view a single book
-  - ✅ edit a single book
-  - ✅ edit transaction page
+  - 🔲 edit a single book (transactions & reports)
+  - ✅ view accounts
+  - ✅ edit account
   - ✅ transactions page
   - ✅ edit accounts page
-  - ✅ view accounts
+  - ✅ edit transaction page
+  - 🔲 new transaction page
+  - 🔲 currency inputs
+  - 🔲 flow reports view
+  - 🔲 assets & liabilities reports view
+  - 🔲 assets & liabilities values by date view
+  - 🔲 log in page
+  - 🔲 edit user page
+  - 🔲 home page
 - 🔲 Implement main entities classes w/ tests
 - 🔲 Update documentation
 - 🔲 Implement db
