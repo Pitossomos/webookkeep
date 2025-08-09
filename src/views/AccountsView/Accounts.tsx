@@ -1,13 +1,14 @@
-import { Link, useParams } from "react-router";
+import { Link } from "react-router";
 import { Edit } from "lucide-react";
-import type { Account } from "../../types/types";
+import { getAccountsByBook } from "../../data/defaultData";
+import type { Book } from "../../types/types";
 
 type AccountsProps = {
-  accounts: Account[];
+  book: Book;
 };
 
-const Accounts = ({ accounts }: AccountsProps) => {
-  const { bookId } = useParams<{ bookId: string }>();
+const Accounts = ({ book }: AccountsProps) => {
+  const accounts = getAccountsByBook(book);
 
   return accounts.length === 0 ? (
     <p className="text-gray-600 text-lg">
@@ -22,7 +23,7 @@ const Accounts = ({ accounts }: AccountsProps) => {
         >
           <h3 className="text-xl font-semibold mb-2 text-gray-800 flex justify-between">
             {account.name}
-            <Link to={`/books/${bookId}/accounts/${account.id}/edit`}>
+            <Link to={`/books/${book.id}/accounts/${account.id}/edit`}>
               <button className="p-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-colors duration-200">
                 <Edit size={16} />
               </button>
