@@ -1,13 +1,31 @@
 import { Edit } from "lucide-react";
-import type { Transaction } from "../../types/types";
+import type { Account, Transaction } from "../../types/types";
 import { useState } from "react";
+import { getAccountById } from "../../data/defaultData";
+import NotFound from "../../components/NotFound";
+import SelectAccountOption from "./SelectAccountOptions";
+import CurrencyInput from "./CurrencyInput";
 
 type TransactionProps = {
   tx: Transaction;
+  accounts: Account[];
 };
 
-const TransactionRow = ({ tx }: TransactionProps) => {
+const TransactionRow = ({ tx, accounts }: TransactionProps) => {
   const [isEditing, setEditing] = useState(false);
+
+  const source = getAccountById(tx.source_account_id);
+  const destination = getAccountById(tx.destination_account_id);
+
+  if (!source || !destination) return <NotFound />;
+
+  const [formValue, setFormValue] = useState({
+    source: source.name,
+    destination_account_id: destination.name,
+    datetime: tx.datetime,
+    description: tx.description,
+    value: tx.value,
+  });
 
   return (
     <tr key={tx.id} className="hover:bg-gray-50">
@@ -15,7 +33,10 @@ const TransactionRow = ({ tx }: TransactionProps) => {
         <input
           type="date"
           className="border-b-2 disabled:border-white focus:outline-none focus:border-gray-300"
-          value={new Date(tx.datetime).toISOString().split("T")[0]}
+          value={new Date(formValue.datetime).toISOString().split("T")[0]}
+          onChange={(e) =>
+            setFormValue({ ...formValue, datetime: e.target.value })
+          }
           disabled={!isEditing}
         />
       </td>
@@ -24,7 +45,10 @@ const TransactionRow = ({ tx }: TransactionProps) => {
         <input
           type="text"
           className="border-b-2 disabled:border-white focus:outline-none focus:border-gray-300"
-          value={tx.description}
+          value={formValue.description}
+          onChange={(e) =>
+            setFormValue({ ...formValue, description: e.target.value })
+          }
           disabled={!isEditing}
         />
       </td>
@@ -35,25 +59,19 @@ const TransactionRow = ({ tx }: TransactionProps) => {
         } font-medium`}
       >
         R$
-        <input
-          type="number"
-          step="0.01"
-          className="border-b-2 disabled:border-white focus:outline-none focus:border-gray-300 text-right"
-          disabled={!isEditing}
-          value={tx.value.toFixed(2)}
-        />
+        <CurrencyInput isEditing={isEditing} initialValue={formValue.value} />
       </td>
 
       <td className="py-3 px-4 text-sm text-gray-800">
         <select
           className="border-b-2 disabled:border-white focus:outline-none focus:border-gray-300"
-          value="Receita"
+          value={formValue.source}
+          onChange={(e) =>
+            setFormValue({ ...formValue, source: e.target.value })
+          }
           disabled={!isEditing}
         >
-          <option value="Salário" label="Salário" />
-          <option value="Receita" label="Receita" />
-          <option value="Despesa" label="Despesa" />
-          <option value="Dívida" label="Dívida" />
+          <SelectAccountOption accounts={accounts} />
         </select>
       </td>
 
@@ -62,10 +80,7 @@ const TransactionRow = ({ tx }: TransactionProps) => {
           className="border-b-2 disabled:border-white focus:outline-none focus:border-gray-300"
           disabled={!isEditing}
         >
-          <option value="Salário" label="Salário" />
-          <option value="Receita" label="Receita" />
-          <option value="Despesa" label="Despesa" />
-          <option value="Dívida" label="Dívida" />
+          <SelectAccountOption accounts={accounts} />
         </select>
       </td>
 

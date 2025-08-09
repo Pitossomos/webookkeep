@@ -1,13 +1,19 @@
-import type { Transaction } from "../../types/types";
+import type { Book, Transaction } from "../../types/types";
 import HeaderCell from "../../components/HeaderCell";
 import TransactionRow from "./TransactionRow";
+import {
+  getAccountsByBook,
+  getTransactionsByBook,
+} from "../../data/defaultData";
 
 type TransactionsProps = {
-  transactions: Transaction[];
-  editing: boolean;
+  book: Book;
 };
 
-const Transactions = ({ transactions }: TransactionsProps) => {
+const Transactions = ({ book }: TransactionsProps) => {
+  const transactions = getTransactionsByBook(book);
+  const accounts = getAccountsByBook(book);
+
   return transactions.length === 0 ? (
     <p className="text-gray-600 text-lg">
       Nenhuma transação cadastrada para esta conta. Comece criando uma nova
@@ -28,7 +34,7 @@ const Transactions = ({ transactions }: TransactionsProps) => {
         </thead>
         <tbody className="divide-y divide-gray-200">
           {transactions.map((tx: Transaction) => (
-            <TransactionRow key={tx.id} tx={tx} />
+            <TransactionRow key={tx.id} tx={tx} accounts={accounts} />
           ))}
         </tbody>
       </table>
