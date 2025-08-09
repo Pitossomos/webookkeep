@@ -3,29 +3,15 @@ import MainWrapper from "../../components/MainWrapper";
 import TitleWrapper from "../../components/TitleWrapper";
 import PlusButton from "../../components/PlusButton";
 import Transactions from "./Transactions";
-import { getBookById, getTransactionsByBookId } from "../../data/defaultData";
-import { useParams, redirect } from "react-router";
+import { getBookByIdString } from "../../data/defaultData";
+import { useParams } from "react-router";
+import NotFound from "../../components/NotFound";
 
 const TransactionsView = () => {
   const { bookId } = useParams();
-  const bookIdNumber =
-    bookId && !isNaN(Number(bookId)) ? Number(bookId) : undefined;
+  const book = getBookByIdString(bookId);
 
-  if (!bookIdNumber) {
-    redirect("/books");
-    return;
-  }
-
-  const book = getBookById(bookIdNumber);
-
-  if (!book) {
-    redirect("/books");
-    return;
-  }
-
-  const transactions = getTransactionsByBookId(bookIdNumber) || [];
-
-  return (
+  return book ? (
     <MainWrapper>
       <TitleWrapper>
         <Repeat className="mr-3 text-teal-600" size={32} />
@@ -33,8 +19,10 @@ const TransactionsView = () => {
       </TitleWrapper>
       <PlusButton>Criar Nova Transação</PlusButton>
 
-      <Transactions transactions={transactions} editing={false} />
+      <Transactions book={book} />
     </MainWrapper>
+  ) : (
+    <NotFound />
   );
 };
 
