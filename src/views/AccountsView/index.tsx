@@ -3,29 +3,15 @@ import MainWrapper from "../../components/MainWrapper";
 import TitleWrapper from "../../components/TitleWrapper";
 import PlusButton from "../../components/PlusButton";
 import Accounts from "./Accounts";
-import { getAccountsByBookId, getBookById } from "../../data/defaultData";
-import { useParams, redirect } from "react-router";
+import { getBookByIdString } from "../../data/defaultData";
+import { useParams } from "react-router";
+import NotFound from "../../components/NotFound";
 
 const AccountsView = () => {
   const { bookId } = useParams();
-  const bookIdNumber =
-    bookId && !isNaN(Number(bookId)) ? Number(bookId) : undefined;
+  const book = getBookByIdString(bookId);
 
-  if (!bookIdNumber) {
-    redirect("/books");
-    return;
-  }
-
-  const book = getBookById(bookIdNumber);
-
-  if (!book) {
-    redirect("/books");
-    return;
-  }
-
-  const accounts = getAccountsByBookId(bookIdNumber) || [];
-
-  return (
+  return book ? (
     <MainWrapper>
       <TitleWrapper>
         <Wallet className="mr-3 text-purple-600" size={32} />
@@ -33,8 +19,10 @@ const AccountsView = () => {
       </TitleWrapper>
       <PlusButton>Criar Nova Conta</PlusButton>
 
-      <Accounts accounts={accounts} />
+      <Accounts book={book} />
     </MainWrapper>
+  ) : (
+    <NotFound />
   );
 };
 
