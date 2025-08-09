@@ -57,8 +57,21 @@ export const getBookById = (id: number): Book | undefined => {
   return DEFAULT_DATA.books.find((book) => book.id === id);
 };
 
+export const getBookByIdString = (id: string | undefined): Book | undefined => {
+  const bookIdNumber = id && !isNaN(Number(id)) ? Number(id) : undefined;
+  if (!bookIdNumber) return;
+
+  return getBookById(bookIdNumber);
+};
+
 export const getAccountsByBookId = (bookId: number): Account[] => {
   return DEFAULT_DATA.accounts.filter((account) => account.bookId === bookId);
+};
+
+export const getAccountsByBook = (book: Book) => getAccountsByBookId(book.id);
+
+export const getAccountById = (id: number) => {
+  return DEFAULT_DATA.accounts.find((account) => account.id === id);
 };
 
 export const getTransactionsByBookId = (bookId: number): Transaction[] => {
@@ -66,3 +79,6 @@ export const getTransactionsByBookId = (bookId: number): Transaction[] => {
     (transaction) => transaction.bookId === bookId
   );
 };
+
+export const getTransactionsByBook = (book: Book) =>
+  getTransactionsByBookId(book.id);
