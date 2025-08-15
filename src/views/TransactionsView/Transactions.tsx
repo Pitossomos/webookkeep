@@ -8,7 +8,7 @@ import {
 
 type TransactionsProps = {
   book: Book;
-  isEditing: boolean;
+  isEditing?: boolean;
 };
 
 const Transactions = ({ book, isEditing = true }: TransactionsProps) => {
