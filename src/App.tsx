@@ -7,6 +7,8 @@ import BookEditView from "./views/BookEditView";
 import BookView from "./views/BookView";
 import NavBar from "./components/NavBar";
 import NotFound from "./components/NotFound";
+import LogInView from "./views/LogInView";
+import SignUpView from "./views/SignUpView";
 
 function App() {
   return (
@@ -33,6 +35,9 @@ function App() {
           </Route>
           <Route path="new" element={<BookEditView editing={false} />} />
         </Route>
+
+        <Route path="/login" element={<LogInView />} />
+        <Route path="/register" element={<SignUpView />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
