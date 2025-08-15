@@ -6,17 +6,35 @@ type CurrencyInputProps = {
 };
 
 const CurrencyInput = ({ initialValue, isEditing }: CurrencyInputProps) => {
-  const [value, setValue] = useState(initialValue);
+  let valueInCents: number = initialValue;
+  const [displayValue, setDisplayValue] = useState<string>(
+    (initialValue / 100).toLocaleString("pt-BR", {
+      style: "decimal",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })
+  );
 
   return (
     <input
-      type="number"
-      inputMode="decimal"
-      className="border-b-2 disabled:border-white focus:outline-none focus:border-gray-300 text-right"
+      type="string"
+      className="appearance-none text-right"
       disabled={!isEditing}
-      value={value}
-      onChange={(e) => setValue(Number(e.target.value))}
-      onBlur={(e) => setValue(Math.floor(Number(e.target.value) * 100) / 100)}
+      value={displayValue}
+      onChange={(e) => {
+        setDisplayValue(e.target.value);
+      }}
+      onBlur={(e) => {
+        valueInCents =
+          Math.round(parseFloat(e.target.value.replace(",", ".")) * 100) || 0;
+        const newDisplayValue = (valueInCents / 100).toLocaleString("pt-BR", {
+          style: "decimal",
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        });
+        valueInCents = parseInt(newDisplayValue);
+        setDisplayValue(newDisplayValue);
+      }}
     />
   );
 };
