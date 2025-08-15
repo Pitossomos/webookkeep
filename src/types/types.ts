@@ -3,7 +3,7 @@ export type Transaction = {
   bookId: number;
   source_account_id: number;
   destination_account_id: number;
-  datetime: string;
+  datetime: Date;
   description: string;
   value: number;
 };
@@ -13,7 +13,7 @@ export type Account = {
   bookId: number;
   name: string;
   description?: string;
-  type: 'Asset' | 'Liability' | 'Income' | 'Expense' | 'Equity';
+  type: "Asset" | "Liability" | "Income" | "Expense" | "Equity";
 };
 
 export type Book = {
