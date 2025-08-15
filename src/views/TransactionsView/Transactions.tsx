@@ -8,9 +8,10 @@ import {
 
 type TransactionsProps = {
   book: Book;
+  isEditing: boolean;
 };
 
-const Transactions = ({ book }: TransactionsProps) => {
+const Transactions = ({ book, isEditing = true }: TransactionsProps) => {
   const transactions = getTransactionsByBook(book);
   const accounts = getAccountsByBook(book);
 
@@ -34,8 +35,9 @@ const Transactions = ({ book }: TransactionsProps) => {
         </thead>
         <tbody className="divide-y divide-gray-200">
           {transactions.map((tx: Transaction) => (
-            <TransactionRow key={tx.id} tx={tx} accounts={accounts} />
+            <TransactionRow key={tx.id} transaction={tx} accounts={accounts} />
           ))}
+          {isEditing && <TransactionRow accounts={accounts} />}
         </tbody>
       </table>
     </div>
