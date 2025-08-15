@@ -17,8 +17,8 @@ A bookkepping system for personal finances based on the double-entry method, use
   - ✅ transactions page
   - ✅ edit accounts page
   - ✅ edit transaction page
-  - 🔲 new transaction page
-  - 🔲 currency inputs
+  - ✅ new transaction page
+  - ✅ currency inputs
   - 🔲 flow reports view
   - 🔲 assets & liabilities reports view
   - 🔲 assets & liabilities values by date view
